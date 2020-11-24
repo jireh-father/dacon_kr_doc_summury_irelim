@@ -40,10 +40,11 @@ def main(args):
     files = glob.glob(args.text_raw_files_pattern)
     bert_tokenizer.train(trainer, files)
 
+    os.makedirs(args.output_dir, exist_ok=True)
     model_files = bert_tokenizer.model.save(args.output_dir, "bert-tokenizer-kr")
     bert_tokenizer.model = WordPiece.from_file(*model_files, unk_token="[UNK]")
 
-    os.makedirs(args.output_dir, exist_ok=True)
+
     bert_tokenizer.save(os.path.join(args.output_dir, "bert-tokenizer-kr.json"))
 
     # bert_tokenizer.enable_padding(pad_id=3, pad_token="[PAD]")
