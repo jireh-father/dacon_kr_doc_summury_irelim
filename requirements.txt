@@ -1,0 +1,5 @@
+gitpython
+rouge_score
+sacrebleu
+pytorch_lightning
+torch==1.1
